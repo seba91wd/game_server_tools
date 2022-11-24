@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page BETA</title>
+        <link rel="stylesheet" href="./install_steamcmd.css">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h2>Installé SteamCMD</h2>
+        <div>
+            <label for="os">Système d'exploitation :</label>
+            <select id="os" size="1" style="margin-left: 19px">;
+                <option>Windows</option>
+                <option>Linux</option>
+            </select>
+            <button id="btn_valider">Valider</button>
+        </div>
+        <div id="div_install_windows">
+            <p>Téléchargé steamcmd.zip sur <a id="link" href="https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip">
+                https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip</a></br>
+                Extraire le fichier "steamcmd.zip" ou bon vous semble.</p>
+        </div>
+        <div id="div_install_linux">
+            <p>
+                Créez un compte utilisateur nommé steam pour exécuter SteamCMD en toute sécurité, en l'isolant du reste du système d'exploitation.</br>
+                Avertissement: Ne pas exécuter steamcmd en tant qu'utilisateur root. Cela représente un risque pour la sécurité.
+            </p>
+            <p>1. En tant qu'utilisateur root, créez l' utilisateur steam :</p>
+            <pre>
+                sudo useradd -m steam
+                sudo passwd steam
+            </pre>
+            <p>
+                2. Allez dans son dossier "home":
+            </p>
+            <pre>
+                sudo -u steam -s
+                cd /home/steam
+            </pre>
+            <p>
+                3. Il est recommandé d'installer le package SteamCMD à partir de vos référentiels de distribution, s'ils sont disponibles :
+            </p>
+            <pre>sudo apt install steamcmd</pre>
+            <p>Noter: 	Si vous utilisez une machine 64 bits, vous devrez ajouter multiverse :</p>
+            <pre>
+                sudo add-apt-repository multiverse
+                sudo dpkg --add-architecture i386
+                sudo apt update
+                sudo apt install lib32gcc-s1 steamcmd
+            </pre>
+        </div>
+    
+        <!-- import de install_steamcmd.js -->
+        <script src="./install_steamcmd.js"></script>
+    </body>    
+</html>
+
+
+

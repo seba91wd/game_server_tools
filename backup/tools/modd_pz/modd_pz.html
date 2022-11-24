@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+    <title>List modds</title>
+    <link rel="stylesheet" href="./modd_pz.css">
+    <meta charset="UTF-8">
+    <!-- Importation de jQuery -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+</head>
+<body id="body_pz">
+    <div>
+        <p>
+            Mod ID: <input id="mod_id" style="margin-left: 55px"></input></br>
+            Workshop ID: <input id="workshop_id" style="margin-left: 10px"></input></br>
+            Map Folder: <input id="map_folder" style="margin-left: 19px"></input></br>
+            Lien :<input id="lien" style="margin-left: 73px"></input></br>
+            Description :<input id="description" style="margin-left: 10px"></input>
+        </p>
+        <button id="btn_add_modd">Ajouter mods</button>
+        <button id="btn_edit_cell">Modifier cellule : inactif</button>
+        <button onclick="download()">Sauvgarder</button>
+        <label for="file" class="custom-file-upload">Importer</label><input id="file" type='file' accept='.html' onchange='openFile(event)'>
+    </div>
+
+    <div>
+        <table id="tableau">
+            <thead>
+                <tr>
+                    <th id="th_number">N°</th>
+                    <th id="th_modID">Mod ID</th>
+                    <th id="th_workshopID">Workshop ID</th>
+                    <th>Map Folder</th>
+                    <th>Lien</th>
+                    <th>Description</th>
+                    <th id="th_option">Trie / Suprimer</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+                <tr>
+                    <td>1</td>
+                    <td>BedfordFalls</td>
+                    <td>522891356</td>
+                    <td>BedfordFalls;North;South;West</td>
+                    <td>https://steamcommunity.com/sharedfiles/filedetails/?id=522891356</td>
+                    <td>Map BedfordFalls</td>
+                    <td>
+                        <button onclick="move(`up`)">↑</button>
+                        <button onclick="move(`down`)">↓</button>
+                        <button onclick="supprimerLigne(this.parentNode.parentNode.rowIndex)">Suprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>firearmmod;firearmmodbspatch</td>
+                    <td>2256623447</td>
+                    <td></td>
+                    <td>https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447</td>
+                    <td>Ajoute plusieurs nouvelles armes : Glock 17, Colt Single Action Army, MP5, Carabine UZI, Winchester 1894 et 1873, FN FAL, M60, M24, Ithaque 37, Remington 870, Ruger M77/22, M24</td>
+                    <td>
+                        <button onclick="move(`up`)">↑</button>
+                        <button onclick="move(`down`)">↓</button>
+                        <button onclick="supprimerLigne(this.parentNode.parentNode.rowIndex)">Suprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>MoreBuilds</td>
+                    <td>515555911</td>
+                    <td></td>
+                    <td>https://steamcommunity.com/sharedfiles/filedetails/?id=515555911</td>
+                    <td>Ajoute de meubles, décoration, conteneur, etc.....</td>
+                    <td>
+                        <button onclick="move(`up`)">↑</button>
+                        <button onclick="move(`down`)">↓</button>
+                        <button onclick="supprimerLigne(this.parentNode.parentNode.rowIndex)">Suprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>PlayersOnMap</td>
+                    <td>2732804047</td>
+                    <td></td><td>https://steamcommunity.com/sharedfiles/filedetails/?id=2732804047</td>
+                    <td>Affiches les joueurs sur la minimap</td>
+                    <td>
+                        <button onclick="move(`up`)">↑</button>
+                        <button onclick="move(`down`)">↓</button>
+                        <button onclick="supprimerLigne(this.parentNode.parentNode.rowIndex)">Suprimer</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>SkillRecoveryJournal</td>
+                    <td>2503622437</td>
+                    <td></td>
+                    <td>https://steamcommunity.com/sharedfiles/filedetails/?id=2503622437</td>
+                    <td>Ajoute Recovery Journal</td>
+                    <td>
+                        <button onclick="move(`up`)">↑</button>
+                        <button onclick="move(`down`)">↓</button>
+                        <button onclick="supprimerLigne(this.parentNode.parentNode.rowIndex)">Suprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </br>
+    <div>
+        <button id="btn_gliste">Générer la liste</button></br>
+        <p><button onclick="copy('list_mod_id')">Copier</button> Mods=<span id="list_mod_id"></span></p>
+        <p><button onclick="copy('list_workshop_id')">Copier</button> WorkshopItems=<span id="list_workshop_id"></span></p>
+        <p><button onclick="copy('list_map')">Copier</button> Map=<span id="list_map"></span></p>
+    </div>
+
+    <!-- import de index.js -->
+    <script src="./modd_pz.js"></script>
+</body>
