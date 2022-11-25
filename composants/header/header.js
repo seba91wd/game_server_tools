@@ -1,8 +1,8 @@
-import { log } from "../../index.js";
+import { log } from "../functions/my_functions.js";
 
 export function myHeader(){
     log("Import : myHeader");
-    const HEADER = document.querySelector("HEADER");
+    const HEADER = document.querySelector('HEADER');
     const LOGO = document.createElement('img');
     LOGO.src = "../../style/LOGO_game_server_tools.png";
     LOGO.alt = "Logo du site 'GAME SERVER TOOLS'";
@@ -18,9 +18,9 @@ export function myHeader(){
     const PARAGRAPHE2 = document.createElement('p');
 
     const TOOLS_LISTE = [
-        "Installation de SteamCMD.",
-        "Installation de serveur via SteamCMD.",
-        "Modder un server."
+        "Installation de SteamCMD",
+        "Installation de serveur via SteamCMD",
+        "Modder un server"
     ];
 
 
@@ -35,28 +35,19 @@ export function myHeader(){
     // Ajout du PARAGRAPHE2 dans le header
     HEADER.append(PARAGRAPHE2);
 
-    // var ul = document.createElement("ul");
-    // HEADER.appendChild(ul);
-    // for (let i = 0; i < TOOLS_LISTE.length; i++){
-    //     log(TOOLS_LISTE[i]);
-
-    //     var li = document.createElement("li");  
-    //     li.innerHTML = TOOLS_LISTE[i]
-    //     ul.appendChild(li);
-    // }
-
-    let monUL = document.createElement("ul");
-    HEADER.append(monUL)
+    // Boucle qui liste les élément de TOOLS_LISTE
+    let ul = document.createElement('ul');
+    HEADER.append(ul)
     for (let i = 0; i < TOOLS_LISTE.length; i++){
         log(TOOLS_LISTE[i]);
 
         let mLi = document.createElement('li')
-        monUL.append(mLi)
+        ul.append(mLi)
         mLi.textContent = TOOLS_LISTE[i]
     }
-    let headerStyle = document.createElement("style");
-    // const style = document.querySelector('style')
 
+    // Creation du style du header
+    let headerStyle = document.createElement('style');
     headerStyle.textContent = `
     header{
         margin: 10px auto;
@@ -79,31 +70,88 @@ export function myHeader(){
     header li{
         margin: 6px 35px;
     }
-    `
-    HEADER.prepend(headerStyle)
 
-}
+    /*Centrage du bouton 'Continuer'*/
+    header nav{
+        margin: auto;
+        width: 70%;
+        display: flex;
+        align-items: center;
+    }
+    
+    header button{
+        color: #ffffff;
+        background-color: #000000;
+        border-radius: 5px;
+        padding: 10px 20px;
+        transition: 1s;
+        margin: 5px auto;
+    }
+
+    header button:hover{
+        color: #000000;
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 10px 20px;
+    }
+
+    `;
+
+    // Ajout du style du header
+    HEADER.prepend(headerStyle);
+
+    // Creation du boutton du header
+    const nav = document.createElement('nav')
+    const BTN = document.createElement('button');
+    BTN.id = 'btn_continuer';
+    BTN.style = 'width: 500px;';
+    BTN.textContent = 'Continuer';
+    nav.append(BTN);
+    HEADER.append(nav)
+
+    //-------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------
+
+    HEADER.addEventListener('click', (e) =>{
+        // log(e.target.id)
+
+        // click sur le boutton 'continuer'
+        if(e.target.id == 'btn_continuer'){
+            log('TEST: BTN continuer');
+            // display none sur les 'p' et 'ul'
+            document.getElementsByTagName('p')[0].style.display = 'none'
+            document.getElementsByTagName('p')[1].style.display = 'none'
+            document.getElementsByTagName('ul')[0].style.display = 'none'
+            document.getElementById('btn_continuer').style.display = 'none'
+    
+            // creation des btn lien des fonctions
+            for(let i = 0; i < TOOLS_LISTE.length; i++){
+                const BTN = document.createElement('button')
+                BTN.id = 'btn_f'+i;
+                BTN.style = 'padding: 5px; margin: 5px auto;';
+                BTN.textContent = TOOLS_LISTE[i];
+                nav.append(BTN);
+    
+            }
+            // Passage de la nav en display flex pour la disposition des btn outils
+            nav.style = 'display: flex; align-items: center; width: 70%; margin: auto;';
+    
+            // Animation
+            // HEADER.style.height = '390px';
+    
+        }
+
+        if(e.target.id == 'btn_f0'){
+            log('TEST: BTN btn_f0');
+        };
+        if(e.target.id == 'btn_f1'){
+            log('TEST: BTN btn_f1');
+        };
+        if(e.target.id == 'btn_f2'){
+            log('TEST: BTN btn_f2');
+        };
 
 
-
-
-
-// let monButton = document.querySelector('button')
-// let monTItre = document.querySelector('input')
-// let monText = document.querySelector('textarea')
-// let monUL = document.querySelector('ul')
-// let body = document.querySelector('body')
-// const monH2 = document.querySelector('#mT')
-
-// monButton.addEventListener('click', function(){
-// mh2 = document.createElement('h2')
-// mLi = document.createElement('li')
-// mDiv = document.createElement('div')
-// monUL.prepend(mDiv)
-// mDiv.prepend(mLi)
-// mDiv.prepend(mh2)
-// mLi.textContent = monText.value
-// mh2.textContent = monTItre.value
-// monText.value = '';
-// monTItre.value = '';
-// })
+    });
+};
