@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>GAME SERVER TOOLS</title>
+        <link rel="stylesheet" href="style/index.css">
+        <meta charset="UTF-8">
+    </head>
+    <body id="body">
+        <!-- div préambule -->
+        <div id="header_box">
+            <!-- Logo src="https://n0namen0.github.io/WAB_Ansi_Logo_Maker/" font="ELUSIVEX" elusive="Silv" -->
+            <img src="./style/logo_game_server_tools.png">
+            <div id="preambule" class="preambule_on">
+                <p>
+                    Cette page rassemble des outils et des informations permettant la mise en place, la gestion, et le modding de serveur de jeux.
+                    Tous les outils mis à disposition s’exécutent localement et ne nécessitent pas de connexion internet,
+                    toutefois une connexion internet sera nécessaire pour installer un serveur avec SteamCMD.
+                    Chacun des outils est compatible pour une utilisation sur un système Windows et linux.
+                </p>
+                <p>Outils disponibles:</p>
+                <ul>
+                    <li>Installation de SteamCMD.</li>
+                    <li>Installation de serveur via SteamCMD.</li>
+                    <li>Modder un server.</li>
+                </ul>
+            </div>
+    
+            <div id="function_list">
+                <button id="btn_install_server">Installer un serveur</button>
+                <button id="btn_install_steamcmd">Installer SteamCMD</button>
+                <button id="btn_modd_pz">Modder Project Zomboid</button>
+            </div>
+        </div>
+        <div id="div_btn">
+            <button id="btn_continuer" style="width: 500px;">Continuer</button>
+            <button id="btn_toggle_header_box" style="display: none; width: 500px;">↑</button>
+        </div>
+    
+        <div id="div_object">
+            <!-- object contenant les pages outils -->
+            <object id="tool_page"
+                    overflow="auto"
+                    style="display: none;"
+                    data=""
+                    type = "text/html"
+                    width = "100%"
+                    height=""
+                    >
+            </object>
+        </div>
+    
+        <!-- import de index.js -->
+        <script src="index.js"></script>
+    </body>    
+</html>

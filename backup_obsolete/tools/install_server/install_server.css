@@ -6,7 +6,7 @@
 body {
     font-family: "Perfect DOS VGA 437 Win";
     color: rgb(202, 202, 202);
-        background-color: rgb(42, 46, 41);
+    background-color: rgb(45, 45, 45);
     box-sizing: border-box;
     border: 5px solid rgb(218, 23, 23);
     padding: 20px;

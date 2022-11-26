@@ -17,6 +17,7 @@ export function myHeader(){
 
     const PARAGRAPHE2 = document.createElement('p');
 
+    // Liste des fonctions proposées
     const TOOLS_LISTE = [
         "Installation de SteamCMD",
         "Installation de serveur via SteamCMD",
@@ -37,14 +38,23 @@ export function myHeader(){
 
     // Boucle qui liste les élément de TOOLS_LISTE
     let ul = document.createElement('ul');
-    HEADER.append(ul)
+    HEADER.append(ul);
     for (let i = 0; i < TOOLS_LISTE.length; i++){
         log(TOOLS_LISTE[i]);
 
-        let mLi = document.createElement('li')
-        ul.append(mLi)
-        mLi.textContent = TOOLS_LISTE[i]
+        let mLi = document.createElement('li');
+        ul.append(mLi);
+        mLi.textContent = TOOLS_LISTE[i];
     }
+
+    // Creation du boutton 'continuer' dans le header
+    const nav = document.createElement('nav');
+    const BTN = document.createElement('button');
+    BTN.id = 'btn_continuer';
+    BTN.style = 'width: 500px;';
+    BTN.textContent = 'Continuer';
+    nav.append(BTN);
+    HEADER.append(nav);
 
     // Creation du style du header
     let headerStyle = document.createElement('style');
@@ -71,7 +81,6 @@ export function myHeader(){
         margin: 6px 35px;
     }
 
-    /*Centrage du bouton 'Continuer'*/
     header nav{
         margin: auto;
         width: 70%;
@@ -93,21 +102,22 @@ export function myHeader(){
         background-color: #ffffff;
         border-radius: 5px;
         padding: 10px 20px;
+        cursor: pointer;
     }
-
     `;
 
     // Ajout du style du header
     HEADER.prepend(headerStyle);
 
-    // Creation du boutton du header
-    const nav = document.createElement('nav')
-    const BTN = document.createElement('button');
-    BTN.id = 'btn_continuer';
-    BTN.style = 'width: 500px;';
-    BTN.textContent = 'Continuer';
-    nav.append(BTN);
-    HEADER.append(nav)
+    // NOTE : L'affichage des pages outils ce fait actuellement grâce a une balise <object>,
+    //        un click sur les boutons 'btn_f' change la valeur OBJECT.data et OBJECT.height
+    // A faire : Prévoir une fonction heightAuto(OBJECT)
+
+    // Construction de object pour l'affichage des pages outils dans la balise <main>
+    const MAIN = document.querySelector('MAIN');
+    const OBJECT = document.createElement('object');
+    OBJECT.type = "text/html";
+    OBJECT.width = '90%';
 
     //-------------------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------------
@@ -127,8 +137,8 @@ export function myHeader(){
     
             // creation des btn lien des fonctions
             for(let i = 0; i < TOOLS_LISTE.length; i++){
-                const BTN = document.createElement('button')
-                BTN.id = 'btn_f'+i;
+                const BTN = document.createElement('button');
+                BTN.id = 'btn_f' + i;
                 BTN.style = 'padding: 5px; margin: 5px auto;';
                 BTN.textContent = TOOLS_LISTE[i];
                 nav.append(BTN);
@@ -139,19 +149,28 @@ export function myHeader(){
     
             // Animation
             // HEADER.style.height = '390px';
-    
         }
 
+
+        // click sur le bouton "Installation de SteamCMD"
         if(e.target.id == 'btn_f0'){
             log('TEST: BTN btn_f0');
+            OBJECT.data = "./tools/install_server/install_server.html";
+            OBJECT.height = '430px';
         };
+
+        // click sur le bouton "Installation de serveur via SteamCMD"
         if(e.target.id == 'btn_f1'){
             log('TEST: BTN btn_f1');
+            OBJECT.data = "./tools/install_steamcmd/install_steamcmd.html";
+            OBJECT.height = '720px';
         };
+        // click sur le bouton "Modder un server"
         if(e.target.id == 'btn_f2'){
             log('TEST: BTN btn_f2');
+            OBJECT.data = "./tools/modd_pz/modd_pz.html";
+            OBJECT.height = '805px';
         };
-
-
+        MAIN.append(OBJECT);
     });
 };
